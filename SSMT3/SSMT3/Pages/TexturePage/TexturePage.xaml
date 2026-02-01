@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="SSMT3.TexturePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -74,7 +74,14 @@
                                Source="{Binding ImageSource}"
                                Stretch="UniformToFill"
                                Height="125"
-                               Width="125"/>
+                               Width="125">
+
+                            <Image.ContextFlyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem Text="使用默认打开方式打开贴图" Click="MenuFlyoutItem_Click_OpenTextures"/>
+                                </MenuFlyout>
+                            </Image.ContextFlyout>
+                        </Image>
 
                         <StackPanel Grid.Row="0"
                                     Grid.Column="1"

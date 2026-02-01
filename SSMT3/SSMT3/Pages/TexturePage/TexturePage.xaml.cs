@@ -1,4 +1,4 @@
-using CommunityToolkit.WinUI.Animations;
+﻿using CommunityToolkit.WinUI.Animations;
 using DirectXTexNet;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -682,6 +682,23 @@ namespace SSMT3
             catch (Exception ex)
             {
                 _ = SSMTMessageHelper.Show(ex.ToString());
+            }
+        }
+
+        private async void MenuFlyoutItem_Click_OpenTextures(object sender, RoutedEventArgs e)
+        {
+            if (sender is FrameworkElement menuItem)
+            {
+                if (menuItem.DataContext is ImageItem clickItem)
+                {
+                    string filePath = Path.Combine(PathManager.Path_LatestFrameAnalysisFolder, clickItem.FileName);
+
+                    await SSMTCommandHelper.ShellOpenFile(filePath);
+                }
+                else
+                {
+                    return;
+                }
             }
         }
     }
