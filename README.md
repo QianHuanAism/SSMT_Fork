@@ -2,23 +2,21 @@
 
 基于3Dmigoto的模型提取与Mod制作工具箱
 
-# 不支持的游戏
+# 使用文档
 
-- Genshin Impact 原神
-- Honkai Impact3 崩坏三
-- Honkai Star Rail 崩坏:星穹铁道
-- Zenless Zone Zero 绝区零
+https://starbobis.github.io/SSMT-Documents/
 
-对于上述游戏目前只有同类项目支持:
+# Build
 
-- XXMI-Launcher https://github.com/SpectrumQT/XXMI-Launcher
-- gui_collect: https://github.com/Petrascyll/gui_collect
-- XXMI-Tools https://github.com/leotorrez/XXMITools
+打包使用Velopack，打包代码参考如下：
 
-不支持原因可参考资料:
+```
+vpk pack --packId SSMT3  --packDir .\net8.0-windows10.0.19041.0\ --mainExe SSMT3.exe --packVersion 3.5.8
+```
 
-https://mp.weixin.qq.com/s/GY5uYGDGOVu4NzBKHziqDQ
+一般打包发布只需要修改后面的版本号为对应版本即可
 
+# 社区共建
 
-
+SSMT本体、TheHerta3插件、SSMT-Documents文档均已基于GPL3.0 LICENSE 开源，欢迎大家参与共建
 
