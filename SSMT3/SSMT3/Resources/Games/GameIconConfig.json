@@ -23,6 +23,10 @@
     {
       "GameName": "ZZMI",
       "Show": true
+    },
+    {
+      "GameName": "AEMI",
+      "Show": true
     }
   ]
 }
