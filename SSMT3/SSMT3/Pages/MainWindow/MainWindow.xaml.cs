@@ -160,7 +160,7 @@ namespace SSMT3
                 NavigationViewItem_GameTypePage.Visibility = Visibility.Collapsed;
                 NavigationViewItem_ManuallyReversePage.Visibility = Visibility.Collapsed;
                 NavigationViewItem_AutoReversePage.Visibility = Visibility.Collapsed;
-                NavigationViewItem_ProtectPage.Visibility = Visibility.Collapsed;
+                //NavigationViewItem_ProtectPage.Visibility = Visibility.Collapsed;
                 
 
             }
@@ -172,7 +172,7 @@ namespace SSMT3
                 NavigationViewItem_GameTypePage.Visibility = Visibility.Visible;
                 NavigationViewItem_ManuallyReversePage.Visibility = Visibility.Visible;
                 NavigationViewItem_AutoReversePage.Visibility = Visibility.Visible;
-                NavigationViewItem_ProtectPage.Visibility = Visibility.Visible;
+                //NavigationViewItem_ProtectPage.Visibility = Visibility.Visible;
 
             }
 
