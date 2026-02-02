@@ -394,7 +394,7 @@ namespace SSMT3.Core.Games
             LOG.Info("开始提取:");
             foreach (DrawIBItem drawIBItem in DrawIBItemList)
             {
-                string DrawIB = drawIBItem.DrawIB;
+                string DrawIB = drawIBItem.DrawIB.Trim();
 
                 if (DrawIB.Trim() == "")
                 {

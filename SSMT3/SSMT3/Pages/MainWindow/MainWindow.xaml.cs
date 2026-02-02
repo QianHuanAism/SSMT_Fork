@@ -53,7 +53,7 @@ namespace SSMT3
 
 
             // 构造函数中（InitializeComponent 之后）添加
-            _trayIcon = new TrayIcon(this, "Assets\\XiaoMai.ico", "SSMT3 正在后台运行");
+            _trayIcon = new TrayIcon(this, "Resources\\XiaoMai.ico", "SSMT3 正在后台运行");
 
             // 初始化Composition组件
             // 获取Image控件的Visual对象
