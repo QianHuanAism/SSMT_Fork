@@ -254,7 +254,7 @@ The following sets the maximum # of items to show before wrapping.-->
 
                             </Border>
 
-                            <Border x:Name="Border_GINoError">
+                            <!--<Border x:Name="Border_GINoError">
 
                                 <StackPanel Orientation="Horizontal">
                                     <Button
@@ -273,7 +273,7 @@ The following sets the maximum # of items to show before wrapping.-->
                                         Unchecked="CheckBox_AutoRunIgnoreErrorGIPlugin_Checked" />
                                 </StackPanel>
                                 
-                            </Border>
+                            </Border>-->
                       
                           
 

@@ -163,21 +163,21 @@ namespace SSMT3
             CheckBox_AutoSetAnalyseOptions.IsChecked = gameConfig.AutoSetAnalyseOptions;
             CheckBox_PureGameMode.IsChecked = gameConfig.PureGameMode;
             CheckBox_RunWithShell.IsChecked = gameConfig.RunWithShell;
-            CheckBox_AutoRunIgnoreErrorGIPlugin.IsChecked = gameConfig.AutoRunIgnoreErrorGIPlugin;
+            //CheckBox_AutoRunIgnoreErrorGIPlugin.IsChecked = gameConfig.AutoRunIgnoreErrorGIPlugin;
             NumberBox_Delay.Value = gameConfig.Delay;
 
             CheckBox_OverwriteWWMIEngineSetting.IsChecked = gameConfig.OverwriteWWMIEngineSetting;
 
 
             //是否显示防报错按钮
-            if (gameConfig.GamePreset == GamePreset.GIMI )
-            {
-                Border_GINoError.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                Border_GINoError.Visibility = Visibility.Collapsed;
-			}
+   //         if (gameConfig.GamePreset == GamePreset.GIMI )
+   //         {
+   //             Border_GINoError.Visibility = Visibility.Visible;
+   //         }
+   //         else
+   //         {
+   //             Border_GINoError.Visibility = Visibility.Collapsed;
+			//}
 
             //是否显示WWMI预配置按钮
             if (gameConfig.GamePreset == GamePreset.WWMI || gameConfig.GamePreset == GamePreset.WuWa)
@@ -660,39 +660,39 @@ namespace SSMT3
 
 
 
-        private void Button_CleanGICache_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                //获取原神安装路径
-                string TargetExePath = TextBox_TargetPath.Text;
+        //private void Button_CleanGICache_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        //获取原神安装路径
+        //        string TargetExePath = TextBox_TargetPath.Text;
 
 
-                string localLow = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                    "AppData", "LocalLow");
+        //        string localLow = Path.Combine(
+        //            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+        //            "AppData", "LocalLow");
 
-                string LocalLogFilePath = Path.Combine(localLow,"miHoYo", "原神", "LocalLog.log");
-                if (File.Exists(LocalLogFilePath))
-                {
-                    File.Delete(LocalLogFilePath);
-                }
+        //        string LocalLogFilePath = Path.Combine(localLow,"miHoYo", "原神", "LocalLog.log");
+        //        if (File.Exists(LocalLogFilePath))
+        //        {
+        //            File.Delete(LocalLogFilePath);
+        //        }
 
-                string OutputLogFilePath = Path.Combine(localLow, "miHoYo", "原神", "output_log.txt");
-                if (File.Exists(OutputLogFilePath))
-                {
-                    File.Delete(OutputLogFilePath);
-                }
+        //        string OutputLogFilePath = Path.Combine(localLow, "miHoYo", "原神", "output_log.txt");
+        //        if (File.Exists(OutputLogFilePath))
+        //        {
+        //            File.Delete(OutputLogFilePath);
+        //        }
 
-                _ = SSMTMessageHelper.Show("缓存日志清理完成");
+        //        _ = SSMTMessageHelper.Show("缓存日志清理完成");
 
-            }
-            catch (Exception ex)
-            {
-                _ = SSMTMessageHelper.Show(ex.ToString());
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _ = SSMTMessageHelper.Show(ex.ToString());
+        //    }
 
-        }
+        //}
 
         private void ComboBox_GameTypeFolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -954,17 +954,17 @@ namespace SSMT3
             gameConfig.SaveConfig();
         }
 
-        private void CheckBox_AutoRunIgnoreErrorGIPlugin_Checked(object sender, RoutedEventArgs e)
-        {
-            if (IsLoading)
-            {
-                return;
-            }
+        //private void CheckBox_AutoRunIgnoreErrorGIPlugin_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    if (IsLoading)
+        //    {
+        //        return;
+        //    }
 
-            GameConfig gameConfig = new GameConfig();
-            gameConfig.AutoRunIgnoreErrorGIPlugin = CheckBox_AutoRunIgnoreErrorGIPlugin.IsChecked == true;
-            gameConfig.SaveConfig();
-        }
+        //    GameConfig gameConfig = new GameConfig();
+        //    gameConfig.AutoRunIgnoreErrorGIPlugin = CheckBox_AutoRunIgnoreErrorGIPlugin.IsChecked == true;
+        //    gameConfig.SaveConfig();
+        //}
 
         private void NumberBox_Delay_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
         {

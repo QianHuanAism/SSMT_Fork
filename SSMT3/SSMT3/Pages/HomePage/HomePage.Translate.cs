@@ -105,11 +105,11 @@ namespace SSMT3
                 CheckBox_DllPreProcess.Content = "使用UPX默认选项加壳";
                 ToolTipService.SetToolTip(CheckBox_DllPreProcess, "勾选后运行前对d3d11.dll执行UPX压缩");
 
-                Button_CleanGICache.Content = "清理原神缓存日志";
-                ToolTipService.SetToolTip(Button_CleanGICache, "清理原神反作弊的运行报错日志，以避免由于缓存日志导致标记重点扫描从而更容易出现【与服务器的连接已断开】【15-4001】【10612-4001】的问题");
+                //Button_CleanGICache.Content = "清理原神缓存日志";
+                //ToolTipService.SetToolTip(Button_CleanGICache, "清理原神反作弊的运行报错日志，以避免由于缓存日志导致标记重点扫描从而更容易出现【与服务器的连接已断开】【15-4001】【10612-4001】的问题");
 
-                Button_RunIgnoreGIError40.Content = "启动网络加固插件";
-                ToolTipService.SetToolTip(Button_RunIgnoreGIError40, "开启后，使用SSMT启动游戏使用Mod将可以避免由于Mod导致的网络卡顿而出现的【与服务器的连接已断开】【15-4001】【10612-4001】错误弹窗");
+                //Button_RunIgnoreGIError40.Content = "启动网络加固插件";
+                //ToolTipService.SetToolTip(Button_RunIgnoreGIError40, "开启后，使用SSMT启动游戏使用Mod将可以避免由于Mod导致的网络卡顿而出现的【与服务器的连接已断开】【15-4001】【10612-4001】错误弹窗");
 
                 CheckBox_PureGameMode.Content = "纯净游戏模式";
                 ToolTipService.SetToolTip(CheckBox_PureGameMode, "开启后点击【开始游戏】按钮将不再启动3Dmigoto，适合只想纯享游戏的用户");
@@ -121,8 +121,8 @@ namespace SSMT3
                 ToolTipService.SetToolTip(CheckBox_RunWithShell, "勾选后以Shell方式运行启动路径，适度规避父进程检测，仅推荐GIMI开启");
 
 
-                CheckBox_AutoRunIgnoreErrorGIPlugin.Content = "自动运行网络加固插件";
-                ToolTipService.SetToolTip(CheckBox_AutoRunIgnoreErrorGIPlugin, "开启后点击【开始游戏】时会自动运行网络加固插件，免去手动操作");
+                //CheckBox_AutoRunIgnoreErrorGIPlugin.Content = "自动运行网络加固插件";
+                //ToolTipService.SetToolTip(CheckBox_AutoRunIgnoreErrorGIPlugin, "开启后点击【开始游戏】时会自动运行网络加固插件，免去手动操作");
 
 
                 NumberBox_Delay.Header = "注入程序自动退出秒数";
@@ -206,11 +206,11 @@ namespace SSMT3
                 CheckBox_DllPreProcess.Content = "Pack d3d11.dll with UPX";
                 ToolTipService.SetToolTip(CheckBox_DllPreProcess, "When checked, run UPX on d3d11.dll before launch");
 
-                Button_CleanGICache.Content = "Clean GI Log Cache Files";
-                ToolTipService.SetToolTip(Button_CleanGICache, "Clear Error Log Files To Prevent Forever No-Condition Error");
+                //Button_CleanGICache.Content = "Clean GI Log Cache Files";
+                //ToolTipService.SetToolTip(Button_CleanGICache, "Clear Error Log Files To Prevent Forever No-Condition Error");
 
-                Button_RunIgnoreGIError40.Content = "Run GoodWorkGI.exe";
-                ToolTipService.SetToolTip(Button_RunIgnoreGIError40, "The 4th Generation Mod Network Protect Technique");
+                //Button_RunIgnoreGIError40.Content = "Run GoodWorkGI.exe";
+                //ToolTipService.SetToolTip(Button_RunIgnoreGIError40, "The 4th Generation Mod Network Protect Technique");
 
 
                 Button_RunLaunchPath.Content = " Start Game";
