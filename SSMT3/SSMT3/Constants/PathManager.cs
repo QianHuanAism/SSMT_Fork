@@ -11,7 +11,7 @@ namespace SSMT3
     public class PathManager
     {
         public static string analyse_options = "deferred_ctx_immediate dump_rt dump_cb dump_vb dump_ib buf txt dds dump_tex dds";
-        public static string SSMT_Version = "V3.5.9";
+        public static string SSMT_Version = "V3.6.0";
         public static string SSMT_Title = " " + SSMT_Version;
 
         public static string Name_Plugin_Upx = "upx.exe";

@@ -371,6 +371,9 @@ namespace SSMT3
                 List<DrawIBItem> DrawIBItemList = [];
                 foreach (DrawIBItem drawIBItem in DrawIBItems)
                 {
+                    //如果用户粘贴IB时不小心添加了空格，就帮他去掉
+                    drawIBItem.DrawIB = drawIBItem.DrawIB.Trim();
+
                     DrawIBItemList.Add(drawIBItem);
                 }
 
