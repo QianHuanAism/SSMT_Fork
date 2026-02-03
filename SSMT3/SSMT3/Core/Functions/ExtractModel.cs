@@ -39,7 +39,7 @@ namespace SSMT3
                 }
                 else if (gameConfig.LogicName == LogicName.AEMI)
                 {
-                    RunResult = AEMI.ExtractUnityVS(DrawIBItemList);
+                    RunResult = AEMI.Extract(DrawIBItemList);
                 }
                 else if (gameConfig.LogicName == LogicName.YYSLS)
                 {

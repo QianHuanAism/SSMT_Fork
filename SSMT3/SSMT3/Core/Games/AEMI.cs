@@ -9,7 +9,7 @@ namespace SSMT3.Core.Games
 {
     public class AEMI
     {
-        public static List<D3D11GameType> GetPossibleGameTypeList_UnityVS(string DrawIB, D3D11GameTypeLv2 d3D11GameTypeLv2, string PointlistIndex, List<string> TrianglelistIndexList)
+        public static List<D3D11GameType> GetPossibleGameTypeList_Endfield(string DrawIB, D3D11GameTypeLv2 d3D11GameTypeLv2, string PointlistIndex, List<string> TrianglelistIndexList)
         {
             List<D3D11GameType> PossibleGameTypeList = new List<D3D11GameType>();
 
@@ -27,6 +27,13 @@ namespace SSMT3.Core.Games
                 //传递过来一堆TrianglelistIndex，但是我们要找到满足条件的那个,即Buffer文件都存在的那个
                 string TrianglelistIndex = d3D11GameTypeLv2.FilterTrianglelistIndex_UnityVS(TrianglelistIndexList, d3D11GameType);
                 LOG.Info("TrianglelistIndex: " + TrianglelistIndex);
+
+
+                //Nico:
+                //目前的AEMI测试版终末地Mod，必须彻底删掉Mod文件才能正常识别数据类型
+                //如果只是F6关掉Mod的话，Position槽位结尾会多出来一堆奇怪的数据，导致数据类型无法识别
+                //不打算在这里进行兼容Mod的提取，所以暂时不改了，后面让用户注意Dump的时候要彻底删除Mod并F10刷新即可
+                //具体要等后面老外的加载器发布后再观察一下，暂时不改。
 
 
                 if (TrianglelistIndex == "")
@@ -216,7 +223,7 @@ namespace SSMT3.Core.Games
             //此时需要先读取所有存在的数据类型。
             //此时需要我们先去生成几个数据类型用于测试。
             //还有就是数据类型的文件夹是存在哪里的
-            List<D3D11GameType> PossibleD3D11GameTypeList = GetPossibleGameTypeList_UnityVS(DrawIB, d3D11GameTypeLv2, PointlistIndex, TrianglelistIndexList);
+            List<D3D11GameType> PossibleD3D11GameTypeList = GetPossibleGameTypeList_Endfield(DrawIB, d3D11GameTypeLv2, PointlistIndex, TrianglelistIndexList);
 
             if (PossibleD3D11GameTypeList.Count == 0)
             {
@@ -386,7 +393,7 @@ namespace SSMT3.Core.Games
 
             return true;
         }
-        public static bool ExtractUnityVS(List<DrawIBItem> DrawIBItemList)
+        public static bool Extract(List<DrawIBItem> DrawIBItemList)
         {
             GameConfig gameConfig = new GameConfig();
             D3D11GameTypeLv2 d3D11GameTypeLv2 = new D3D11GameTypeLv2(gameConfig.GameTypeName);
