@@ -3,6 +3,7 @@ using Microsoft.UI;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Imaging;
@@ -39,6 +40,7 @@ namespace SSMT3
         /// </summary>
         private ObservableCollection<GameIconItem> GameIconItemList = new ObservableCollection<GameIconItem>();
 
+        private GameIconItem _rightTappedItem = null;
 
 
         /// <summary>
@@ -284,6 +286,61 @@ namespace SSMT3
             }
             string IconGameName = GameIconItemList[GameIconGridView.SelectedIndex].GameName;
             GameNameChanged(IconGameName);
+        }
+
+        private void GameIconGridViewItem_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            _rightTappedItem = null;
+
+            if (sender is FrameworkElement fe && fe.DataContext is GameIconItem item)
+            {
+                // 只能在当前选中的图标上右键
+                if (GameIconGridView.SelectedItem == item)
+                {
+                    _rightTappedItem = item;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void GameIconItemMenuFlyout_Opening(object sender, object e)
+        {
+            if (_rightTappedItem == null || GameIconGridView.SelectedItem != _rightTappedItem)
+            {
+                if (sender is FlyoutBase flyout)
+                {
+                    flyout.Hide();
+                }
+            }
+        }
+
+        private void MenuFlyoutItem_Open3DmigotoFolder_Click(object sender, RoutedEventArgs e)
+        {
+            // 只针对当前选中项
+            if (_rightTappedItem == null || GameIconGridView.SelectedItem != _rightTappedItem)
+            {
+                return;
+            }
+
+            try
+            {
+                GameConfig gameConfig = new GameConfig();
+                if (Directory.Exists(gameConfig.MigotoPath))
+                {
+                    SSMTCommandHelper.ShellOpenFolder(gameConfig.MigotoPath);
+                }
+                else
+                {
+                    _ = SSMTMessageHelper.Show("找不到3Dmigoto文件夹路径，请先在配置中设置。", "Can't find 3Dmigoto folder path.");
+                }
+            }
+            catch (Exception ex)
+            {
+                _ = SSMTMessageHelper.Show(ex.ToString());
+            }
         }
 
         private void ComboBox_GameName_SelectionChanged(object sender, SelectionChangedEventArgs e)

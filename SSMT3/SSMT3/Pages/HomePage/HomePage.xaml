@@ -48,7 +48,16 @@
 
             <GridView.ItemTemplate >
                 <DataTemplate x:Name="GameIconItemGridTemplate" x:DataType="local:GameIconItem" >
-                    <GridViewItem >
+                    <GridViewItem
+                        RightTapped="GameIconGridViewItem_RightTapped">
+                        <GridViewItem.ContextFlyout>
+                            <MenuFlyout Opening="GameIconItemMenuFlyout_Opening">
+                                <MenuFlyoutItem
+                                    Text="打开3Dmigoto文件夹"
+                                    Click="MenuFlyoutItem_Open3DmigotoFolder_Click"/>
+                            </MenuFlyout>
+                        </GridViewItem.ContextFlyout>
+
                         <Grid x:Name="ModShowGrid" Width="80" Height="80" AllowDrop="False" >
 
                             <Grid.RowDefinitions>
