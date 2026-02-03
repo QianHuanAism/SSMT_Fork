@@ -134,6 +134,9 @@ namespace SSMT3
                 CheckBox_OverwriteWWMIEngineSetting.Content = "覆盖鸣潮引擎设置";
                 ToolTipService.SetToolTip(CheckBox_OverwriteWWMIEngineSetting, "勾选后，启动游戏时会覆盖鸣潮引擎设置以提高Mod兼容性");
 
+
+
+
             }
             else
             {
