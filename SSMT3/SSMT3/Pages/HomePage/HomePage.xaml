@@ -48,7 +48,28 @@
 
             <GridView.ItemTemplate >
                 <DataTemplate x:Name="GameIconItemGridTemplate" x:DataType="local:GameIconItem" >
-                    <GridViewItem >
+                    <GridViewItem
+                        RightTapped="GameIconGridViewItem_RightTapped">
+                        <GridViewItem.ContextFlyout>
+                            <MenuFlyout Opening="GameIconItemMenuFlyout_Opening">
+                                <!--他奶奶的有BUG，这里x:Name指定居然无法在代码里生效，导致无法通过Name设置双语支持，不管了暂时中文吧-->
+                                <MenuFlyoutItem
+                                    x:Name="MenuFlyoutItem_GameIcon_Open3DmigotoFolder"
+                                    Text="打开3Dmigoto文件夹"
+                                    Click="MenuFlyoutItem_Open3DmigotoFolder_Click"/>
+                                <MenuFlyoutItem
+                                    x:Name="MenuFlyoutItem_GameIcon_TurnOnSymlink"
+                                    Text="开启Symlink特性"
+                                    Click="MenuFlyoutItem_GameIcon_TurnOnSymlink_Click"
+                                    ></MenuFlyoutItem>
+                                <MenuFlyoutItem
+                                    x:Name="MenuFlyoutItem_GameIcon_TurnOffSymlink"
+                                    Text="关闭Symlink特性"
+                                    Click="MenuFlyoutItem_GameIcon_TurnOffSymlink_Click"
+                                    ></MenuFlyoutItem>
+                            </MenuFlyout>
+                        </GridViewItem.ContextFlyout>
+
                         <Grid x:Name="ModShowGrid" Width="80" Height="80" AllowDrop="False" >
 
                             <Grid.RowDefinitions>
@@ -254,7 +275,7 @@ The following sets the maximum # of items to show before wrapping.-->
 
                             </Border>
 
-                            <Border x:Name="Border_GINoError">
+                            <!--<Border x:Name="Border_GINoError">
 
                                 <StackPanel Orientation="Horizontal">
                                     <Button
@@ -273,7 +294,7 @@ The following sets the maximum # of items to show before wrapping.-->
                                         Unchecked="CheckBox_AutoRunIgnoreErrorGIPlugin_Checked" />
                                 </StackPanel>
                                 
-                            </Border>
+                            </Border>-->
                       
                           
 

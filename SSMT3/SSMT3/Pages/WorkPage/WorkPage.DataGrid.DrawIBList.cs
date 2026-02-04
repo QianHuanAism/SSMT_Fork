@@ -73,6 +73,10 @@ namespace SSMT3
                     {
                         DrawIBItem item = new DrawIBItem();
                         item.DrawIB = (string)jkobj["DrawIB"];
+
+                        //偶尔用户会把空格也粘贴进来导致提取模型失败，这里帮用户修剪掉空格
+                        item.DrawIB = item.DrawIB.Trim();
+
                         item.Alias = (string)jkobj["Alias"];
                         DrawIBItems.Add(item);
                     }
@@ -131,7 +135,9 @@ namespace SSMT3
                     if (item.DrawIB.Trim() != "")
                     {
                         JObject jobj = new JObject();
-                        jobj["DrawIB"] = item.DrawIB;
+
+                        //去掉空格，防止用户粘贴时带入空格导致提取模型失败
+                        jobj["DrawIB"] = item.DrawIB.Trim();
                         jobj["Alias"] = item.Alias;
                         DrawIBJarrayList.Add(jobj);
 

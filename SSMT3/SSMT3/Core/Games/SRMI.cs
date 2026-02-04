@@ -917,7 +917,7 @@ namespace SSMT3
             LOG.Info("开始提取 HSR 3.2 测试:");
             foreach (DrawIBItem drawIBItem in DrawIBItemList)
             {
-                string DrawIB = drawIBItem.DrawIB;
+                string DrawIB = drawIBItem.DrawIB.Trim();
 
                 if (DrawIB.Trim() == "")
                 {

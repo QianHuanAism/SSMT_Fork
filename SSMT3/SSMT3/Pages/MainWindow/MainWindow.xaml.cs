@@ -53,7 +53,7 @@ namespace SSMT3
 
 
             // 构造函数中（InitializeComponent 之后）添加
-            _trayIcon = new TrayIcon(this, "Assets\\XiaoMai.ico", "SSMT3 正在后台运行");
+            _trayIcon = new TrayIcon(this, "Resources\\XiaoMai.ico", "SSMT3 正在后台运行");
 
             // 初始化Composition组件
             // 获取Image控件的Visual对象
@@ -160,7 +160,7 @@ namespace SSMT3
                 NavigationViewItem_GameTypePage.Visibility = Visibility.Collapsed;
                 NavigationViewItem_ManuallyReversePage.Visibility = Visibility.Collapsed;
                 NavigationViewItem_AutoReversePage.Visibility = Visibility.Collapsed;
-                NavigationViewItem_ProtectPage.Visibility = Visibility.Collapsed;
+                //NavigationViewItem_ProtectPage.Visibility = Visibility.Collapsed;
                 
 
             }
@@ -172,7 +172,7 @@ namespace SSMT3
                 NavigationViewItem_GameTypePage.Visibility = Visibility.Visible;
                 NavigationViewItem_ManuallyReversePage.Visibility = Visibility.Visible;
                 NavigationViewItem_AutoReversePage.Visibility = Visibility.Visible;
-                NavigationViewItem_ProtectPage.Visibility = Visibility.Visible;
+                //NavigationViewItem_ProtectPage.Visibility = Visibility.Visible;
 
             }
 

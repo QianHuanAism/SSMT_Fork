@@ -103,7 +103,7 @@ namespace SSMT3
         public bool OverwriteWWMIEngineSetting { get; set; } = false;
 
         public bool RunWithShell { get; set; } = false;
-        public bool AutoRunIgnoreErrorGIPlugin { get; set; } = false;
+        //public bool AutoRunIgnoreErrorGIPlugin { get; set; } = false;
 
         public int Delay { get; set; } = 5;
 
@@ -254,10 +254,10 @@ namespace SSMT3
                 }
 
                 //AutoRunIgnoreErrorGIPlugin
-                if (jobj.ContainsKey("AutoRunIgnoreErrorGIPlugin"))
-                {
-                    this.AutoRunIgnoreErrorGIPlugin = (bool)jobj["AutoRunIgnoreErrorGIPlugin"];
-                }
+                //if (jobj.ContainsKey("AutoRunIgnoreErrorGIPlugin"))
+                //{
+                //    this.AutoRunIgnoreErrorGIPlugin = (bool)jobj["AutoRunIgnoreErrorGIPlugin"];
+                //}
 
                 //Delay
                 if (jobj.ContainsKey("Delay"))
@@ -343,7 +343,7 @@ namespace SSMT3
 
             jobj["PureGameMode"] = this.PureGameMode;
             jobj["RunWithShell"] = this.RunWithShell;
-            jobj["AutoRunIgnoreErrorGIPlugin"] = this.AutoRunIgnoreErrorGIPlugin;
+            //jobj["AutoRunIgnoreErrorGIPlugin"] = this.AutoRunIgnoreErrorGIPlugin;
             jobj["Delay"] = this.Delay;
 
             jobj["ExtraInjectDllPath"] = this.ExtraInjectDllPath;

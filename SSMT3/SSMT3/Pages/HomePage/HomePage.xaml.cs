@@ -3,6 +3,7 @@ using Microsoft.UI;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Imaging;
@@ -39,6 +40,7 @@ namespace SSMT3
         /// </summary>
         private ObservableCollection<GameIconItem> GameIconItemList = new ObservableCollection<GameIconItem>();
 
+        private GameIconItem _rightTappedItem = null;
 
 
         /// <summary>
@@ -163,21 +165,21 @@ namespace SSMT3
             CheckBox_AutoSetAnalyseOptions.IsChecked = gameConfig.AutoSetAnalyseOptions;
             CheckBox_PureGameMode.IsChecked = gameConfig.PureGameMode;
             CheckBox_RunWithShell.IsChecked = gameConfig.RunWithShell;
-            CheckBox_AutoRunIgnoreErrorGIPlugin.IsChecked = gameConfig.AutoRunIgnoreErrorGIPlugin;
+            //CheckBox_AutoRunIgnoreErrorGIPlugin.IsChecked = gameConfig.AutoRunIgnoreErrorGIPlugin;
             NumberBox_Delay.Value = gameConfig.Delay;
 
             CheckBox_OverwriteWWMIEngineSetting.IsChecked = gameConfig.OverwriteWWMIEngineSetting;
 
 
             //是否显示防报错按钮
-            if (gameConfig.GamePreset == GamePreset.GIMI )
-            {
-                Border_GINoError.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                Border_GINoError.Visibility = Visibility.Collapsed;
-			}
+   //         if (gameConfig.GamePreset == GamePreset.GIMI )
+   //         {
+   //             Border_GINoError.Visibility = Visibility.Visible;
+   //         }
+   //         else
+   //         {
+   //             Border_GINoError.Visibility = Visibility.Collapsed;
+			//}
 
             //是否显示WWMI预配置按钮
             if (gameConfig.GamePreset == GamePreset.WWMI || gameConfig.GamePreset == GamePreset.WuWa)
@@ -284,6 +286,61 @@ namespace SSMT3
             }
             string IconGameName = GameIconItemList[GameIconGridView.SelectedIndex].GameName;
             GameNameChanged(IconGameName);
+        }
+
+        private void GameIconGridViewItem_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            _rightTappedItem = null;
+
+            if (sender is FrameworkElement fe && fe.DataContext is GameIconItem item)
+            {
+                // 只能在当前选中的图标上右键
+                if (GameIconGridView.SelectedItem == item)
+                {
+                    _rightTappedItem = item;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void GameIconItemMenuFlyout_Opening(object sender, object e)
+        {
+            if (_rightTappedItem == null || GameIconGridView.SelectedItem != _rightTappedItem)
+            {
+                if (sender is FlyoutBase flyout)
+                {
+                    flyout.Hide();
+                }
+            }
+        }
+
+        private void MenuFlyoutItem_Open3DmigotoFolder_Click(object sender, RoutedEventArgs e)
+        {
+            // 只针对当前选中项
+            if (_rightTappedItem == null || GameIconGridView.SelectedItem != _rightTappedItem)
+            {
+                return;
+            }
+
+            try
+            {
+                GameConfig gameConfig = new GameConfig();
+                if (Directory.Exists(gameConfig.MigotoPath))
+                {
+                    SSMTCommandHelper.ShellOpenFolder(gameConfig.MigotoPath);
+                }
+                else
+                {
+                    _ = SSMTMessageHelper.Show("找不到3Dmigoto文件夹路径，请先在配置中设置。", "Can't find 3Dmigoto folder path.");
+                }
+            }
+            catch (Exception ex)
+            {
+                _ = SSMTMessageHelper.Show(ex.ToString());
+            }
         }
 
         private void ComboBox_GameName_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -660,39 +717,39 @@ namespace SSMT3
 
 
 
-        private void Button_CleanGICache_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                //获取原神安装路径
-                string TargetExePath = TextBox_TargetPath.Text;
+        //private void Button_CleanGICache_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        //获取原神安装路径
+        //        string TargetExePath = TextBox_TargetPath.Text;
 
 
-                string localLow = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                    "AppData", "LocalLow");
+        //        string localLow = Path.Combine(
+        //            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+        //            "AppData", "LocalLow");
 
-                string LocalLogFilePath = Path.Combine(localLow,"miHoYo", "原神", "LocalLog.log");
-                if (File.Exists(LocalLogFilePath))
-                {
-                    File.Delete(LocalLogFilePath);
-                }
+        //        string LocalLogFilePath = Path.Combine(localLow,"miHoYo", "原神", "LocalLog.log");
+        //        if (File.Exists(LocalLogFilePath))
+        //        {
+        //            File.Delete(LocalLogFilePath);
+        //        }
 
-                string OutputLogFilePath = Path.Combine(localLow, "miHoYo", "原神", "output_log.txt");
-                if (File.Exists(OutputLogFilePath))
-                {
-                    File.Delete(OutputLogFilePath);
-                }
+        //        string OutputLogFilePath = Path.Combine(localLow, "miHoYo", "原神", "output_log.txt");
+        //        if (File.Exists(OutputLogFilePath))
+        //        {
+        //            File.Delete(OutputLogFilePath);
+        //        }
 
-                _ = SSMTMessageHelper.Show("缓存日志清理完成");
+        //        _ = SSMTMessageHelper.Show("缓存日志清理完成");
 
-            }
-            catch (Exception ex)
-            {
-                _ = SSMTMessageHelper.Show(ex.ToString());
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _ = SSMTMessageHelper.Show(ex.ToString());
+        //    }
 
-        }
+        //}
 
         private void ComboBox_GameTypeFolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -954,17 +1011,17 @@ namespace SSMT3
             gameConfig.SaveConfig();
         }
 
-        private void CheckBox_AutoRunIgnoreErrorGIPlugin_Checked(object sender, RoutedEventArgs e)
-        {
-            if (IsLoading)
-            {
-                return;
-            }
+        //private void CheckBox_AutoRunIgnoreErrorGIPlugin_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    if (IsLoading)
+        //    {
+        //        return;
+        //    }
 
-            GameConfig gameConfig = new GameConfig();
-            gameConfig.AutoRunIgnoreErrorGIPlugin = CheckBox_AutoRunIgnoreErrorGIPlugin.IsChecked == true;
-            gameConfig.SaveConfig();
-        }
+        //    GameConfig gameConfig = new GameConfig();
+        //    gameConfig.AutoRunIgnoreErrorGIPlugin = CheckBox_AutoRunIgnoreErrorGIPlugin.IsChecked == true;
+        //    gameConfig.SaveConfig();
+        //}
 
         private void NumberBox_Delay_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
         {
@@ -1116,6 +1173,6 @@ namespace SSMT3
 
         }
 
-
+  
     }
 }

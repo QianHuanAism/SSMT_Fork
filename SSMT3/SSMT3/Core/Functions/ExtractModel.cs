@@ -22,19 +22,7 @@ namespace SSMT3
                 
                 LOG.Info("FrameAnalysisFolderPath: " + PathManager.Path_LatestFrameAnalysisFolder);
 
-                
-
                 GameConfig gameConfig = new GameConfig();
-
-                //if (gameConfig.GamePreset == GamePreset.GIMI ||
-                //    gameConfig.GamePreset == GamePreset.HIMI ||
-                //    gameConfig.GamePreset == GamePreset.SRMI ||
-                //    gameConfig.GamePreset == GamePreset.ZZMI)
-                //{
-                //    LOG.Error(SSMTErrorInfo.NotSupportedGamePreset());
-                //    return false;
-                //}
-
 
                 if (gameConfig.LogicName == LogicName.SRMI)
                 {
@@ -51,7 +39,7 @@ namespace SSMT3
                 }
                 else if (gameConfig.LogicName == LogicName.AEMI)
                 {
-                    RunResult = AEMI.ExtractUnityVS(DrawIBItemList);
+                    RunResult = AEMI.Extract(DrawIBItemList);
                 }
                 else if (gameConfig.LogicName == LogicName.YYSLS)
                 {

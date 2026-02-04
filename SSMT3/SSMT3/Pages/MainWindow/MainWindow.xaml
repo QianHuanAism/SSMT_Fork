@@ -155,11 +155,11 @@
                     Content="自动逆向" 
                     Tag="AutoReversePage" />
                 
-                <NavigationViewItem 
+                <!--<NavigationViewItem 
                    x:Name="NavigationViewItem_ProtectPage" 
                    Icon="ProtectedDocument" 
                    Content="Mod加密与锁机器码" 
-                   Tag="ProtectPage" />
+                   Tag="ProtectPage" />-->
 
                 <NavigationViewItem 
                     x:Name="NavigationViewItem_DocumentPage" 
